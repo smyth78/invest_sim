@@ -87,7 +87,7 @@ app.layout = html.Div([
                                             [
                                                 dbc.Row(
                                                     [
-                                                        dbc.Col(html.H5(['Please wiat while I calculate...']), width=12,
+                                                        dbc.Col(html.H5(['Please wait while I calculate...']), width=12,
                                                                 className='mt-4'),
                                                     ]
                                                 )
@@ -130,7 +130,8 @@ app.layout = html.Div([
                             dbc.Col(dcc.Graph(id='box'), width=6),
                         ])
                     ]), width=12, className='mt-4')
-                ], style={'display': 'none'}, id='sim-graphs')
+                ], style={'display': 'none'}, id='sim-graphs'),
+                dbc.Row(style={'padding-bottom': '500px'}),
         ],
         className='mt-4'),
 ])
