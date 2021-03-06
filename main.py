@@ -25,6 +25,7 @@ from helper_files.financial_calcs import Calculator, get_table_conditions, make_
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.SANDSTONE])
 app.title = 'Investment simulator'
+server = app.server
 
 app.layout = html.Div([
     dcc.Store(id='strat-row-index', data=1),
