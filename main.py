@@ -15,6 +15,7 @@ from dash.exceptions import PreventUpdate
 from dash import no_update
 import dash_table
 import numpy as np
+from textwrap import dedent
 
 import json
 
@@ -42,7 +43,7 @@ app.layout = html.Div([
                             ),
                             html.Hr(className="my-2"),
                             dcc.Markdown('''
-                            * The volatility of the markets are simula  ted
+                            * The volatility of the markets are simulated
                             * Change the ratio of bonds/equities over time
                             * Monthly contributions can be changed over time 
                             * Simulate the portfolio 10,000 times
@@ -51,6 +52,27 @@ app.layout = html.Div([
                     )
                 )
             ),
+            dbc.Row(
+                    dbc.Col(
+                        dbc.Checklist(
+                            options=[
+                                {"label": "See  model assumptions", "value": 'see'},
+                            ],
+                            value=[],
+                            id="assumptions-check",
+                        ),
+                    )
+            ),
+            dbc.Row(
+                dbc.Col([
+                    dcc.Markdown('''Assumptions of model...'''),
+                    dcc.Markdown('''
+                            * Each yearly bond or stock gain is assumed to be normally distributed
+                            * Each yearly gain is independent of any previous year
+                            * The entire value of the portfolio is fully invested in the chosen ratio
+                                ''')]
+                        ), id='assumptions-list'
+                ),
         dbc.Row(
             [
                 dbc.Col([strategy_card('Strategy', 'secondary')], width=6, className='mt-4'),
@@ -135,6 +157,18 @@ app.layout = html.Div([
         ],
         className='mt-4'),
 ])
+
+# checklist for assumuptions check
+@app.callback(
+    Output('assumptions-list', 'style'),
+    [Input('assumptions-check', 'value')]
+)
+def assumptions_check(value):
+    if 'see' in value:
+        return {'display': 'block'}
+    else:
+        return {'display': 'none'}
+
 
 # this adds rows to the strategy
 @app.callback(
