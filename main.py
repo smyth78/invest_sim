@@ -28,7 +28,6 @@ from helper_files.financial_calcs import Calculator, get_table_conditions, make_
 # dash.Dash.index = index
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.SANDSTONE],  meta_tags=meta)
-# app = Dash_responsive(external_stylesheets=[dbc.themes.SANDSTONE])
 app.title = 'Investment simulator'
 server = app.server
 

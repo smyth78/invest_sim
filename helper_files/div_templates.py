@@ -312,7 +312,7 @@ def human_format(num):
         magnitude += 1
         num /= 1000.0
     # add more suffixes if you need them
-    return '$%.1f%s' % (num, ['', 'k', 'M', 'B'][magnitude])
+    return '$%.2f%s' % (num, ['', 'k', 'M', 'B'][magnitude])
 
 def annual_interest(n_years, total_in, total_out):
     factor = np.exp(np.log(total_in/total_out)/n_years)
