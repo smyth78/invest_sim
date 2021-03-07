@@ -22,11 +22,16 @@ import json
 from helper_files.div_templates import input_card, gain_card, strategy_card, strategy_row, get_concluding_statement, \
     get_summary_of_sim
 from helper_files import alerts as alts
+from meta import meta
 from helper_files.financial_calcs import Calculator, get_table_conditions, make_histo, make_box
 
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.SANDSTONE])
+# dash.Dash.index = index
+
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.SANDSTONE],  meta_tags=[meta])
+# app = Dash_responsive(external_stylesheets=[dbc.themes.SANDSTONE])
 app.title = 'Investment simulator'
 server = app.server
+
 
 app.layout = html.Div([
     dcc.Store(id='strat-row-index', data=1),
