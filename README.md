@@ -1,4 +1,4 @@
-# Live exam data dashboard
+# Stock market simulator
 
 This is a Dash application that provides allows the user to simulate the stockmarket based on some starting conditions and assumptions.
 
